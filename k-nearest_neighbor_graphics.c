@@ -3,12 +3,11 @@
 #include <math.h>
 #include <time.h>
 #include <GL/glut.h>
-//#include <csv.h>
 struct Point{
     int category;                           // Group of point
     double x_coordinate, y_coordinate;      // Co-ordinate of point
     double distance;                        // Distance from test point
-    //double weight;
+
 };
 
 struct Point *points,test_point;
@@ -157,8 +156,8 @@ void keyboard(unsigned char Key, int x, int y){
         yi = (480-y);
         capture_point(category,xi,yi);
         draw_pixel(xi,yi,category);
-        printf("X-Coordinate: %d Y-Coordinate: %d category: %d\t\t\t\t\t[%d]\n",
-        xi,yi,category,point_counter);
+        printf("X-Coordinate: %d Y-Coordinate: %d category: Red\t\t\t\t\t[%d]\n",
+        xi,yi,point_counter);
         break;
     case 'g':
         category=1;
@@ -166,8 +165,8 @@ void keyboard(unsigned char Key, int x, int y){
         yi = (480-y);
         capture_point(category,xi,yi);
         draw_pixel(xi,yi,category);
-        printf("X-Coordinate: %d Y-Coordinate: %d category: %d\t\t\t\t\t[%d]\n",
-        xi,yi,category,point_counter);
+        printf("X-Coordinate: %d Y-Coordinate: %d category: Green\t\t\t\t\t[%d]\n",
+        xi,yi,point_counter);
         break;
       case 'b':
         category=2;
@@ -175,8 +174,8 @@ void keyboard(unsigned char Key, int x, int y){
         yi = (480-y);
         capture_point(category,xi,yi);
         draw_pixel(xi,yi,category);
-        printf("X-Coordinate: %d Y-Coordinate: %d category: %d\t\t\t\t\t[%d]\n",
-        xi,yi,category,point_counter);
+        printf("X-Coordinate: %d Y-Coordinate: %d category: Blue\t\t\t\t\t[%d]\n",
+        xi,yi,point_counter);
         break;
       case 'y':
         category=3;
@@ -184,8 +183,8 @@ void keyboard(unsigned char Key, int x, int y){
         yi = (480-y);
         capture_point(category,xi,yi);
         draw_pixel(xi,yi,category);
-        printf("X-Coordinate: %d Y-Coordinate: %d category: %d\t\t\t\t\t[%d]\n",
-        xi,yi,category,point_counter);
+        printf("X-Coordinate: %d Y-Coordinate: %d category: Yellow\t\t\t\t\t[%d]\n",
+        xi,yi,point_counter);
         break;
       case 'o':
         category=4;
@@ -193,8 +192,8 @@ void keyboard(unsigned char Key, int x, int y){
         yi = (480-y);
         capture_point(category,xi,yi);
         draw_pixel(xi,yi,category);
-        printf("X-Coordinate: %d Y-Coordinate: %d category: %d\t\t\t\t\t[%d]\n",
-        xi,yi,category,point_counter);
+        printf("X-Coordinate: %d Y-Coordinate: %d category: Orange\t\t\t\t\t[%d]\n",
+        xi,yi,point_counter);
         break;
       case 't':
         category = -1;
