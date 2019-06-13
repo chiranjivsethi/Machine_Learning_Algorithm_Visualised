@@ -31,7 +31,8 @@ Following Algorithms are Implemented:
  * K-Nearest Neighbors
  * K-means Clustering
  * Linear Regression with and without Gradient Descent
-# K-Nearest Neighbors
+
+## K-Nearest Neighbors
 It is Classification Algorithm.
 The Implemented Algorithm can able to classify an object class from upto 5 different classes specified by different color such Red, Blue, Green, Orange and Yellow.
 
@@ -54,4 +55,17 @@ Press **Enter** on keyboard to run the algorithm
 
 ![Run](./Images/Knn-Enter_run.gif)
 
-The Color of test object will automatically change to the classified class color
+The Color of test object will automatically change to the classified class color. There is also added funtioanlity for reloading, loading and new.
+
+Press following keybord keys:
+1. For Reloading press **R**
+
+    This will reset the window by removing test point but keeping all the points
+2. For Loading press **L**
+
+    This will reset the window by keeping all the points and also keeping the classifeid test point
+3. For New press **N**
+
+    This will reset the window by removing all the points
+
+## K-Means Clustreing
