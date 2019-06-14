@@ -18,17 +18,7 @@ void kmeans_clustering(){
     
     for (int i = 0; i < point_counter; i++){
       for (int j = 0; j < centroid_counter; j++){
-        draw_line(points[i].x_coordinate,points[i].y_coordinate,
-          point_centroid[j].x_coordinate,point_centroid[j].y_coordinate,0);
-        distance = sqrt((points[i].x_coordinate - point_centroid[j].x_coordinate) *
-          (points[i].x_coordinate - point_centroid[j].x_coordinate) +
-          (points[i].y_coordinate - point_centroid[j].y_coordinate) *
-          (points[i].y_coordinate - point_centroid[j].y_coordinate));
-        delay(100);
-        draw_line(points[i].x_coordinate,points[i].y_coordinate,
-          point_centroid[j].x_coordinate,point_centroid[j].y_coordinate,1);
-        draw_point(points[i].x_coordinate,points[i].y_coordinate,points[i].category);
-        draw_point(point_centroid[j].x_coordinate,point_centroid[j].y_coordinate,point_centroid[j].category);
+        double distance = cal_euclidean_distance(i,j);
         if(distance < points[i].distance){
           points[i].distance = distance;
           points[i].category = point_centroid[j].category;
@@ -82,9 +72,7 @@ void keyboard(unsigned char Key, int x, int y){
           point_centroid[category].captured = true;
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category);
-          printf("Centroid Captured\n");
-          printf("X-Coordinate: %d Y-Coordinate: %d category: Red\t\t\t\t\t[%d]\n",
-          xi,yi,point_counter);
+          print_point(point_centroid[category]);
         }
         else{
           printf("If you want to recapture cenroid press \'Shift + r\' \n");
@@ -102,9 +90,7 @@ void keyboard(unsigned char Key, int x, int y){
           point_centroid[category].captured = true;
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category);
-          printf("Centroid Recaptured\n");
-          printf("X-Coordinate: %d Y-Coordinate: %d category: Red\t\t\t\t\t[%d]\n",
-          xi,yi,point_counter);
+          print_point(point_centroid[category]);
         }
         break;
     case 'g':
@@ -115,8 +101,7 @@ void keyboard(unsigned char Key, int x, int y){
           point_centroid[category].captured = true;
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category);
-          printf("X-Coordinate: %d Y-Coordinate: %d category: Green\t\t\t\t\t[%d]\n",
-          xi,yi,point_counter);
+          print_point(point_centroid[category]);
         }
         else{
           printf("If you want to recapture cenroid press \'Shift + g\' \n");
@@ -134,9 +119,7 @@ void keyboard(unsigned char Key, int x, int y){
           point_centroid[category].captured = true;
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category);
-          printf("Centroid Recaptured\n");
-          printf("X-Coordinate: %d Y-Coordinate: %d category: Green\t\t\t\t\t[%d]\n",
-          xi,yi,point_counter);
+          print_point(point_centroid[category]);
         }
         break;
       case 'b':
@@ -148,7 +131,7 @@ void keyboard(unsigned char Key, int x, int y){
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category);
           printf("X-Coordinate: %d Y-Coordinate: %d category: Blue\t\t\t\t\t[%d]\n",
-          xi,yi,point_counter);
+          xi,yi,centroid_counter);
         }
         else{
           printf("If you want to recapture cenroid press \'Shift + b\' \n");
@@ -168,7 +151,7 @@ void keyboard(unsigned char Key, int x, int y){
           draw_centroid(xi,yi,category);
           printf("Centroid Recaptured\n");
           printf("X-Coordinate: %d Y-Coordinate: %d category: Blue\t\t\t\t\t[%d]\n",
-          xi,yi,point_counter);
+          xi,yi,centroid_counter);
         }
         break;
       case 'y':
@@ -180,7 +163,7 @@ void keyboard(unsigned char Key, int x, int y){
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category);
           printf("X-Coordinate: %d Y-Coordinate: %d category: Yellow\t\t\t\t\t[%d]\n",
-          xi,yi,point_counter);
+          xi,yi,centroid_counter);
         }
         else{
           printf("If you want to recapture cenroid press \'Shift + y\' \n");
@@ -200,7 +183,7 @@ void keyboard(unsigned char Key, int x, int y){
           draw_centroid(xi,yi,category);
           printf("Centroid Recaptured\n");
           printf("X-Coordinate: %d Y-Coordinate: %d category: Yellow\t\t\t\t\t[%d]\n",
-          xi,yi,point_counter);
+          xi,yi,centroid_counter);
         }
         break;
       case 'o':
@@ -212,7 +195,7 @@ void keyboard(unsigned char Key, int x, int y){
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category);
           printf("X-Coordinate: %d Y-Coordinate: %d category: Orange\t\t\t\t\t[%d]\n",
-          xi,yi,point_counter);
+          xi,yi,centroid_counter);
         }
         else{
           printf("If you want to recapture cenroid press \'Shift + o\' \n");
@@ -232,7 +215,7 @@ void keyboard(unsigned char Key, int x, int y){
           draw_centroid(xi,yi,category);
           printf("Centroid Recaptured\n");
           printf("X-Coordinate: %d Y-Coordinate: %d category: Orange\t\t\t\t\t[%d]\n",
-          xi,yi,point_counter);
+          xi,yi,centroid_counter);
         }
         break;
       case 't':
@@ -243,8 +226,8 @@ void keyboard(unsigned char Key, int x, int y){
         draw_point(xi,yi,category);
         printf("\n");
         printf("Point:\n");
-        printf("X-Coordinate: %d Y-Coordinate: %d\n",
-        xi,yi);
+        printf("X-Coordinate: %d Y-Coordinate: %d\t\t\t\t\t[%d]\n",
+          xi,yi,point_counter);
         break; 
       case 13:
         printf("\n");
