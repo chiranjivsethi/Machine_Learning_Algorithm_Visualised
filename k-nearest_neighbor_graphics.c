@@ -1,4 +1,4 @@
-#include "grap.h"
+#include "graphics.h"
 
 struct Point{
   int category;                           // Group of point
@@ -44,7 +44,7 @@ int knn_classifier(){
 
     draw_line(points[i].x_coordinate, points[i].y_coordinate,
       test_point.x_coordinate, test_point.y_coordinate,1);
-      draw_point(test_point.x_coordinate, test_point.y_coordinate,
+    draw_point(test_point.x_coordinate, test_point.y_coordinate,
       test_point.category);
 
     for (int j = 0; j <  point_counter; j++) {
