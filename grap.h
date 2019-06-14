@@ -51,6 +51,33 @@ void draw_point(int x,int y, int c){
     glFlush();
 }
 
+void draw_centroid(int x,int y, int c){
+  if (c == -2){
+    glColor3f(1.0,1.0,1.0);             // White Color
+  }
+  if (c == 0){
+    glColor3f(1.0,0.0,0.0);             // Red Color
+  }
+  if (c == 1) {
+    glColor3f(0.0,1.0,0.0);             // Green Color     
+  }
+  if (c == 2) {
+    glColor3f(0.0,0.0,1.0);             // Blue Color
+  }
+  if (c == 3) {
+    glColor3f(1.0,1.0,0.0);             // Yellow Color
+  }
+  if (c == 4) {
+    glColor3f(1.0,0.5,0.0);             // Orange Color
+  }
+    glPointSize(10.0);
+    glDisable(GL_POINT_SMOOTH);
+    glBegin(GL_POINTS);
+      glVertex2f(x,y);                  //Draw Centroid
+    glEnd();
+    glFlush();
+}
+
 void display(){
   glClearColor(1.0, 1.0, 1.0, 1.0);
   glClear(GL_COLOR_BUFFER_BIT);
