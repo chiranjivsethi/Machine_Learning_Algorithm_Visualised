@@ -62,10 +62,17 @@ void set_value(){
     }
 }
 
-void print_points(){
-  for (int i = 0; i < point_counter; i++)
-  {
-    /* code */
+void print_data(){
+  printf("Points:");
+  for (int i = 0; i < point_counter; i++){
+    printf("X-Coordinate: %d Y-Coordinate: %d\t\t\t\t\t[%d]\n",
+      point,yi,i);   
   }
-  
+  printf("Centroids");
+  for (int i = 0; i < centroid_counter; i++){
+    if(point_centroid[i].category == 1){
+      printf("X-Coordinate: %d Y-Coordinate: %d category: Blue\t\t\t\t\t[%d]\n",
+          xi,yi,i);
+    }
+  }
 }
