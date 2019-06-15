@@ -1,56 +1,21 @@
 #include "graphics.h"
 #include "data_handle.h"
 
-void kmeans_clustering(){
-  while (exit_loops == centroid_counter){  
-    
-    reset_value();
-    break;
-
-    /*for (int i = 0; i < point_counter; i++){
-      for (int j = 0; j < centroid_counter; j++){
-        double distance = cal_euclidean_distance(i,j);
-        if(distance < points[i].distance){
-          points[i].distance = distance;
-          points[i].category = point_centroid[j].category;
-          points_in_category[points[i].category]++;
-        }
-      } 
-    }
-
-    for (int i = 0; i < point_counter; i++){
-      for(int j = 0; j < centroid_counter; j++){
-        if (point_centroid[j].category == points[i].category){
-          point_centroid[j].x_sum = point_centroid[j].x_sum + points[i].x_coordinate;
-          point_centroid[j].y_sum = point_centroid[j].y_sum + points[i].y_coordinate;
-        }
-      }
-    }
-
-    for (int i = 0; i < centroid_counter; i++){
-      point_centroid[i].x_mean = point_centroid[i].x_sum / points_in_category[i];
-      point_centroid[i].y_mean = point_centroid[i].y_sum / points_in_category[i];
-    }
-    
-    for (int i = 0; i < centroid_counter; i++){
-      if (point_centroid[i].x_coordinate == point_centroid[i].x_mean &&
-      point_centroid[i].y_coordinate == point_centroid[i].y_mean){
-        exit_loops++;
-      }
-      else{
-        point_centroid[i].x_coordinate = point_centroid[i].x_mean;
-        point_centroid[i].y_coordinate == point_centroid[i].y_mean;
-      }
-    }
-    iteration_counter++;
-  */} 
-  //EXIT_LOOP:
-  printf("Hello");
+void  kmeans_clustering(){
+  printf("1_in\n");
+  do
+  {
+    printf("2_in\n");
+  } while (0);
+  
 }
 
 void keyboard(unsigned char Key, int x, int y){
   int category, xi, yi;
   switch(Key){
+    case 'A':
+      
+      break;
     case 'r':
         category=0;
         xi = x;
@@ -231,6 +196,7 @@ void keyboard(unsigned char Key, int x, int y){
         printf("\n");
         printf("Applying KMC...\n");
         kmeans_clustering();
+        printf("out\n");
         break;
       case 27:
         printf("Exit...\n");
@@ -242,9 +208,7 @@ void keyboard(unsigned char Key, int x, int y){
 int main(int argc, char** argv){
   points = (struct Point*)malloc(100 * sizeof(struct Point));
   point_centroid = (struct Cluster*)malloc(10 * sizeof(struct Cluster));
-  for (int i = 0; i < 5; i++){
-    point_centroid[i].captured = false;
-  }
+  set_value();
   glutInit(&argc,argv);
   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
   glutInitWindowSize(640,480);

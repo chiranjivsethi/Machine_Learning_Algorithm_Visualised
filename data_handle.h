@@ -48,7 +48,7 @@ double cal_euclidean_distance(int i,int j){
   return distance;
 }
 
-void reset_value(){
+void set_value(){
   for (int i = 0; i < point_counter; i++){
       points[i].distance = 9999;
     }
@@ -57,6 +57,15 @@ void reset_value(){
       point_centroid[i].y_sum = 0;
       point_centroid[i].x_mean = 0;
       point_centroid[i].y_mean = 0;
+      point_centroid[i].captured = false;
       points_in_category[i] = 0; 
     }
+}
+
+void print_points(){
+  for (int i = 0; i < point_counter; i++)
+  {
+    /* code */
+  }
+  
 }
