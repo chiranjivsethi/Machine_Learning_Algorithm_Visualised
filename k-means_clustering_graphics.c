@@ -1,29 +1,19 @@
 #include "graphics.h"
 #include "data_handle.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void kmeans_clustering(){
-  while (1){  
-    for (int i = 0; i < point_counter; i++){
-      points[i].distance = 9999;
-    }
-    for (int i = 0; i < centroid_counter; i++){
-      point_centroid[i].x_sum = 0;
-      point_centroid[i].y_sum = 0;
-      point_centroid[i].x_mean = 0;
-      point_centroid[i].y_mean = 0;
-      points_in_category[i] = 0; 
-    }
+  while (exit_loops == centroid_counter){  
     
-    for (int i = 0; i < point_counter; i++){
+    reset_value();
+    break;
+
+    /*for (int i = 0; i < point_counter; i++){
       for (int j = 0; j < centroid_counter; j++){
         double distance = cal_euclidean_distance(i,j);
         if(distance < points[i].distance){
           points[i].distance = distance;
           points[i].category = point_centroid[j].category;
           points_in_category[points[i].category]++;
-          
         }
       } 
     }
@@ -42,7 +32,6 @@ void kmeans_clustering(){
       point_centroid[i].y_mean = point_centroid[i].y_sum / points_in_category[i];
     }
     
-    exit_loops = 0;
     for (int i = 0; i < centroid_counter; i++){
       if (point_centroid[i].x_coordinate == point_centroid[i].x_mean &&
       point_centroid[i].y_coordinate == point_centroid[i].y_mean){
@@ -53,12 +42,10 @@ void kmeans_clustering(){
         point_centroid[i].y_coordinate == point_centroid[i].y_mean;
       }
     }
-    
-    if (exit_loops == centroid_counter){
-      break;
-    }
     iteration_counter++;
-  } 
+  */} 
+  //EXIT_LOOP:
+  printf("Hello");
 }
 
 void keyboard(unsigned char Key, int x, int y){
@@ -72,7 +59,9 @@ void keyboard(unsigned char Key, int x, int y){
           point_centroid[category].captured = true;
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category);
-          print_point(point_centroid[category]);
+          printf("Centroid Captured\n");
+          printf("X-Coordinate: %d Y-Coordinate: %d category: Blue\t\t\t\t\t[%d]\n",
+          xi,yi,centroid_counter);
         }
         else{
           printf("If you want to recapture cenroid press \'Shift + r\' \n");
@@ -90,7 +79,9 @@ void keyboard(unsigned char Key, int x, int y){
           point_centroid[category].captured = true;
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category);
-          print_point(point_centroid[category]);
+          printf("Centroid Recaptured\n");
+          printf("X-Coordinate: %d Y-Coordinate: %d category: Green\t\t\t\t\t[%d]\n",
+          xi,yi,centroid_counter);
         }
         break;
     case 'g':
@@ -100,8 +91,10 @@ void keyboard(unsigned char Key, int x, int y){
         if(point_centroid[category].captured == false){
           point_centroid[category].captured = true;
           capture_centroid(category,xi,yi);
-          draw_centroid(xi,yi,category);
-          print_point(point_centroid[category]);
+          draw_centroid(xi,yi,category); 
+          printf("Centroid Captured\n");
+          printf("X-Coordinate: %d Y-Coordinate: %d category: Blue\t\t\t\t\t[%d]\n",
+          xi,yi,centroid_counter);
         }
         else{
           printf("If you want to recapture cenroid press \'Shift + g\' \n");
@@ -119,7 +112,9 @@ void keyboard(unsigned char Key, int x, int y){
           point_centroid[category].captured = true;
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category);
-          print_point(point_centroid[category]);
+          printf("Centroid Recaptured\n");
+          printf("X-Coordinate: %d Y-Coordinate: %d category: Green\t\t\t\t\t[%d]\n",
+          xi,yi,centroid_counter);
         }
         break;
       case 'b':
@@ -130,6 +125,7 @@ void keyboard(unsigned char Key, int x, int y){
           point_centroid[category].captured = true;
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category);
+          printf("Centroid Captured\n");
           printf("X-Coordinate: %d Y-Coordinate: %d category: Blue\t\t\t\t\t[%d]\n",
           xi,yi,centroid_counter);
         }
@@ -162,6 +158,7 @@ void keyboard(unsigned char Key, int x, int y){
           point_centroid[category].captured = true;
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category);
+          printf("Centroid Captured\n");
           printf("X-Coordinate: %d Y-Coordinate: %d category: Yellow\t\t\t\t\t[%d]\n",
           xi,yi,centroid_counter);
         }
@@ -194,6 +191,7 @@ void keyboard(unsigned char Key, int x, int y){
           point_centroid[category].captured = true;
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category);
+          printf("Centroid Captured\n");
           printf("X-Coordinate: %d Y-Coordinate: %d category: Orange\t\t\t\t\t[%d]\n",
           xi,yi,centroid_counter);
         }
