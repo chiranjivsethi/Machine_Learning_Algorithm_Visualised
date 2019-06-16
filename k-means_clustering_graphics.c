@@ -2,7 +2,6 @@
 #include "data_handle.h"
 
 void  kmeans_clustering(){
-  printf("1_in\n");
   do
   {
     set_value();
@@ -41,7 +40,6 @@ void  kmeans_clustering(){
       }
     }
     iteration_counter++;
-    printf("2_in\n");
   } while (exit_loops == centroid_counter);
 }
 
