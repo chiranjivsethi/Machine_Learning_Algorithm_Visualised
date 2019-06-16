@@ -76,7 +76,7 @@ void print_data(){
   printf("\nCentroids\n");
   for (int i = 0; i < centroid_counter; i++){
     if(point_centroid[i].category == 0){
-       printf("X-Coordinate: %d Y-Coordinate: %d category: Green\t\t\t\t\t[%d]\n",
+       printf("X-Coordinate: %d Y-Coordinate: %d category: Red\t\t\t\t\t[%d]\n",
           point_centroid[i].x_coordinate,point_centroid[i].y_coordinate,i+1);
     }
     if(point_centroid[i].category == 1){
