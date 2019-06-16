@@ -2,11 +2,12 @@
 #include "data_handle.h"
 
 void  kmeans_clustering(){
-  do
-  {
-    set_value();
-    for (int i = 0; i < point_counter; i++){
-      for (int j = 0; j < centroid_counter; j++){
+  set_value();
+  
+  do{
+    int i,j;
+    for (i = 0; i < point_counter; i++){
+      for (j = 0; j < centroid_counter; j++){
         double distance = cal_euclidean_distance(i,j);
         if(distance < points[i].distance){
           points[i].distance = distance;
@@ -16,8 +17,8 @@ void  kmeans_clustering(){
       } 
     }
 
-    for (int i = 0; i < point_counter; i++){
-      for(int j = 0; j < centroid_counter; j++){
+    for (i = 0; i < point_counter; i++){
+      for(j = 0; j < centroid_counter; j++){
         if (point_centroid[j].category == points[i].category){
           point_centroid[j].x_sum = point_centroid[j].x_sum + points[i].x_coordinate;
           point_centroid[j].y_sum = point_centroid[j].y_sum + points[i].y_coordinate;
@@ -25,22 +26,27 @@ void  kmeans_clustering(){
       }
     }
 
-     for (int i = 0; i < centroid_counter; i++){
+    for (i = 0; i < centroid_counter; i++){
       point_centroid[i].x_mean = point_centroid[i].x_sum / points_in_category[i];
       point_centroid[i].y_mean = point_centroid[i].y_sum / points_in_category[i];
     }
-    for (int i = 0; i < centroid_counter; i++){
+    
+    for (i = 0; i < centroid_counter; i++){
       if (point_centroid[i].x_coordinate == point_centroid[i].x_mean &&
-      point_centroid[i].y_coordinate == point_centroid[i].y_mean){
+        point_centroid[i].y_coordinate == point_centroid[i].y_mean){
         exit_loops++;
       }
       else{
         point_centroid[i].x_coordinate = point_centroid[i].x_mean;
-        point_centroid[i].y_coordinate == point_centroid[i].y_mean;
+        point_centroid[i].y_coordinate = point_centroid[i].y_mean;
       }
     }
     iteration_counter++;
-  } while (exit_loops == centroid_counter);
+    max_iteration--;
+    if(max_iteration == 0){
+      break;
+    }
+  }while (exit_loops != centroid_counter);
 }
 
 void keyboard(unsigned char Key, int x, int y){
@@ -198,7 +204,7 @@ void keyboard(unsigned char Key, int x, int y){
         }
         break;
       case 'O':
-        category=4;
+        category=2;
         xi = x;
         yi = (480-y);
         draw_centroid(point_centroid[category].x_coordinate,point_centroid[category].y_coordinate
@@ -241,6 +247,8 @@ void keyboard(unsigned char Key, int x, int y){
 int main(int argc, char** argv){
   points = (struct Point*)malloc(100 * sizeof(struct Point));
   point_centroid = (struct Cluster*)malloc(10 * sizeof(struct Cluster));
+  printf("Enter Maximum Number of iterations: \n");
+  scanf("%d",&max_iteration);
   set_capture_flag();
   glutInit(&argc,argv);
   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);

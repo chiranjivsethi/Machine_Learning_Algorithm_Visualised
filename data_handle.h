@@ -24,6 +24,7 @@ int centroid_counter = 0;
 int points_in_category[5];
 int iteration_counter = 0;
 int exit_loops;
+int max_iteration;
 char category[10];
 
 void capture_point(int c,int x,int y){
@@ -70,7 +71,7 @@ void set_value(){
 void print_data(){
   printf("\nPoints:\n");
   for (int i = 0; i < point_counter; i++){
-    printf("X-Coordinate: %d Y-Coordinate: %d Distance: %f Category: %d\t\t\t[%d]\n",
+    printf("X-Coordinate: %d Y-Coordinate: %d Distance: %f Category: %d\t\t\t\t\t[%d]\n",
       points[i].x_coordinate,points[i].y_coordinate,points[i].distance,points[i].category,i+1);   
   }
   printf("\nCentroids\n");
