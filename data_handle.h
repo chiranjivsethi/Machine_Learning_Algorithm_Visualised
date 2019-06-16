@@ -22,7 +22,7 @@ struct Cluster *point_centroid;
 int point_counter = 0;
 int centroid_counter = 0;
 int points_in_category[5];
-int iteration_counter;
+int iteration_counter = 0;
 int exit_loops;
 char category[10];
 

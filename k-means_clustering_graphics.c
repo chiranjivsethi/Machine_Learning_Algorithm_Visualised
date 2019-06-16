@@ -229,7 +229,7 @@ void keyboard(unsigned char Key, int x, int y){
         printf("\n");
         printf("Applying KMC...\n");
         kmeans_clustering();
-        printf("out\n");
+        printf("\nIterations: %d\n",iteration_counter);
         break;
       case 27:
         printf("Exit...\n");
