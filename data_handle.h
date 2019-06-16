@@ -48,6 +48,12 @@ double cal_euclidean_distance(int i,int j){
   return distance;
 }
 
+void set_capture_flag(){
+  for (int i = 0; i < centroid_counter; i++){
+      point_centroid[i].captured = false;
+    }
+}
+
 void set_value(){
   for (int i = 0; i < point_counter; i++){
       points[i].distance = 9999;
@@ -57,22 +63,37 @@ void set_value(){
       point_centroid[i].y_sum = 0;
       point_centroid[i].x_mean = 0;
       point_centroid[i].y_mean = 0;
-      point_centroid[i].captured = false;
       points_in_category[i] = 0; 
     }
 }
 
 void print_data(){
-  printf("Points:");
+  printf("\nPoints:\n");
   for (int i = 0; i < point_counter; i++){
     printf("X-Coordinate: %d Y-Coordinate: %d\t\t\t\t\t[%d]\n",
-      point,yi,i);   
+      points[i].x_coordinate,points[i].y_coordinate,i+1);   
   }
-  printf("Centroids");
+  printf("\nCentroids\n");
   for (int i = 0; i < centroid_counter; i++){
+    if(point_centroid[i].category == 0){
+      printf("X-Coordinate: %d Y-Coordinate: %d category: Red\t\t\t\t\t[%d]\n",
+          point_centroid[i].x_coordinate,point_centroid[i].y_coordinate,i+1);
+    }
     if(point_centroid[i].category == 1){
+      printf("X-Coordinate: %d Y-Coordinate: %d category: Green\t\t\t\t\t[%d]\n",
+          point_centroid[i].x_coordinate,point_centroid[i].y_coordinate,i+1);
+    }
+    if(point_centroid[i].category == 2){
       printf("X-Coordinate: %d Y-Coordinate: %d category: Blue\t\t\t\t\t[%d]\n",
-          xi,yi,i);
+          point_centroid[i].x_coordinate,point_centroid[i].y_coordinate,i+1);
+    }
+    if(point_centroid[i].category == 3){
+      printf("X-Coordinate: %d Y-Coordinate: %d category: Yellow\t\t\t\t\t[%d]\n",
+          point_centroid[i].x_coordinate,point_centroid[i].y_coordinate,i+1);
+    }
+    if(point_centroid[i].category == 4){
+      printf("X-Coordinate: %d Y-Coordinate: %d category: Orange\t\t\t\t\t[%d]\n",
+          point_centroid[i].x_coordinate,point_centroid[i].y_coordinate,i+1);
     }
   }
 }

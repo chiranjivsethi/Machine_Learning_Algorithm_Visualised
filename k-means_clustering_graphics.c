@@ -5,6 +5,7 @@ void  kmeans_clustering(){
   printf("1_in\n");
   do
   {
+    set_value();
     printf("2_in\n");
   } while (0);
   
@@ -14,7 +15,7 @@ void keyboard(unsigned char Key, int x, int y){
   int category, xi, yi;
   switch(Key){
     case 'A':
-      
+        print_data();
       break;
     case 'r':
         category=0;
@@ -25,7 +26,7 @@ void keyboard(unsigned char Key, int x, int y){
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category);
           printf("Centroid Captured\n");
-          printf("X-Coordinate: %d Y-Coordinate: %d category: Blue\t\t\t\t\t[%d]\n",
+          printf("X-Coordinate: %d Y-Coordinate: %d category: Red\t\t\t\t\t[%d]\n",
           xi,yi,centroid_counter);
         }
         else{
@@ -45,7 +46,7 @@ void keyboard(unsigned char Key, int x, int y){
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category);
           printf("Centroid Recaptured\n");
-          printf("X-Coordinate: %d Y-Coordinate: %d category: Green\t\t\t\t\t[%d]\n",
+          printf("X-Coordinate: %d Y-Coordinate: %d category: Red\t\t\t\t\t[%d]\n",
           xi,yi,centroid_counter);
         }
         break;
@@ -58,7 +59,7 @@ void keyboard(unsigned char Key, int x, int y){
           capture_centroid(category,xi,yi);
           draw_centroid(xi,yi,category); 
           printf("Centroid Captured\n");
-          printf("X-Coordinate: %d Y-Coordinate: %d category: Blue\t\t\t\t\t[%d]\n",
+          printf("X-Coordinate: %d Y-Coordinate: %d category: Green\t\t\t\t\t[%d]\n",
           xi,yi,centroid_counter);
         }
         else{
@@ -208,7 +209,7 @@ void keyboard(unsigned char Key, int x, int y){
 int main(int argc, char** argv){
   points = (struct Point*)malloc(100 * sizeof(struct Point));
   point_centroid = (struct Cluster*)malloc(10 * sizeof(struct Cluster));
-  set_value();
+  set_capture_flag();
   glutInit(&argc,argv);
   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
   glutInitWindowSize(640,480);
