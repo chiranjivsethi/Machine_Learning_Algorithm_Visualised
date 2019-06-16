@@ -70,13 +70,13 @@ void set_value(){
 void print_data(){
   printf("\nPoints:\n");
   for (int i = 0; i < point_counter; i++){
-    printf("X-Coordinate: %d Y-Coordinate: %d\t\t\t\t\t[%d]\n",
-      points[i].x_coordinate,points[i].y_coordinate,i+1);   
+    printf("X-Coordinate: %d Y-Coordinate: %d Distance: %f Category: %d\t\t\t[%d]\n",
+      points[i].x_coordinate,points[i].y_coordinate,points[i].distance,points[i].category,i+1);   
   }
   printf("\nCentroids\n");
   for (int i = 0; i < centroid_counter; i++){
     if(point_centroid[i].category == 0){
-      printf("X-Coordinate: %d Y-Coordinate: %d category: Red\t\t\t\t\t[%d]\n",
+       printf("X-Coordinate: %d Y-Coordinate: %d category: Green\t\t\t\t\t[%d]\n",
           point_centroid[i].x_coordinate,point_centroid[i].y_coordinate,i+1);
     }
     if(point_centroid[i].category == 1){
