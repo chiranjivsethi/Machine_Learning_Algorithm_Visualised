@@ -25,6 +25,7 @@ int points_in_category[5];
 int iteration_counter = 0;
 int exit_loops;
 int max_iteration;
+int time_delay;
 char category[10];
 
 void capture_point(int c,int x,int y){

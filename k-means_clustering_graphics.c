@@ -1,18 +1,34 @@
 #include "graphics.h"
 #include "data_handle.h"
 
-void  kmeans_clustering(){
+void  kmeans_clustering(int time_delay){
   set_value();
   
   do{
-    int i,j;
+    int i,j,m,n;
     for (i = 0; i < point_counter; i++){
       for (j = 0; j < centroid_counter; j++){
+        draw_line(points[i].x_coordinate, points[i].y_coordinate,
+          point_centroid[j].x_coordinate, point_centroid[j].y_coordinate,0);
         double distance = cal_euclidean_distance(i,j);
+        delay(time_delay);
         if(distance < points[i].distance){
           points[i].distance = distance;
           points[i].category = point_centroid[j].category;
           points_in_category[points[i].category]++;
+          draw_line(points[i].x_coordinate, points[i].y_coordinate,
+            point_centroid[j].x_coordinate, point_centroid[j].y_coordinate,2);
+          delay(time_delay);
+        }
+        draw_line(points[i].x_coordinate, points[i].y_coordinate,
+          point_centroid[j].x_coordinate, point_centroid[j].y_coordinate,1);
+        for (m = 0; m < point_counter; m++){
+          draw_point(points[m].x_coordinate, points[m].y_coordinate,
+          points[m].category);
+        }
+        for (n = 0; n < centroid_counter; n++){
+          draw_centroid(point_centroid[n].x_coordinate, point_centroid[n].y_coordinate,
+          point_centroid[n].category);
         }
       } 
     }
@@ -32,6 +48,7 @@ void  kmeans_clustering(){
     }
     
     for (i = 0; i < centroid_counter; i++){
+      draw_centroid(point_centroid[i].x_coordinate, point_centroid[i].y_coordinate,-2);
       if (point_centroid[i].x_coordinate == point_centroid[i].x_mean &&
         point_centroid[i].y_coordinate == point_centroid[i].y_mean){
         exit_loops++;
@@ -40,9 +57,13 @@ void  kmeans_clustering(){
         point_centroid[i].x_coordinate = point_centroid[i].x_mean;
         point_centroid[i].y_coordinate = point_centroid[i].y_mean;
       }
+       draw_centroid(point_centroid[i].x_coordinate, point_centroid[i].y_coordinate,
+          point_centroid[i].category);
     }
     iteration_counter++;
     max_iteration--;
+    printf("\nIterations: %d\n",iteration_counter);
+    print_data();
     if(max_iteration == 0){
       break;
     }
@@ -52,9 +73,6 @@ void  kmeans_clustering(){
 void keyboard(unsigned char Key, int x, int y){
   int category, xi, yi;
   switch(Key){
-    case 'A':
-        print_data();
-      break;
     case 'r':
         category=0;
         xi = x;
@@ -234,8 +252,7 @@ void keyboard(unsigned char Key, int x, int y){
       case 13:
         printf("\n");
         printf("Applying KMC...\n");
-        kmeans_clustering();
-        printf("\nIterations: %d\n",iteration_counter);
+        kmeans_clustering(time_delay);
         break;
       case 27:
         printf("Exit...\n");
@@ -249,6 +266,8 @@ int main(int argc, char** argv){
   point_centroid = (struct Cluster*)malloc(10 * sizeof(struct Cluster));
   printf("Enter Maximum Number of iterations: \n");
   scanf("%d",&max_iteration);
+  printf("Enter time delay: \n");
+  scanf("%d",&time_delay);
   set_capture_flag();
   glutInit(&argc,argv);
   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
@@ -260,7 +279,6 @@ int main(int argc, char** argv){
   glLoadIdentity();
   gluOrtho2D(0.0,640.0,0.0,480.0);
   glMatrixMode(GL_MODELVIEW);
-  glPointSize(10);
   glutKeyboardFunc(keyboard);
   glutMainLoop();
   free(points);

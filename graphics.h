@@ -19,6 +19,7 @@ void draw_line(int x1, int y1, int x2, int y2, int flag) {
 }
 
 void draw_point(int x,int y, int c){
+  glPointSize(7);
   if (c == -2){
     glColor3f(1.0,1.0,1.0);             // White Color
   }
@@ -49,6 +50,7 @@ void draw_point(int x,int y, int c){
 }
 
 void draw_centroid(int x,int y, int c){
+  glPointSize(10);
   if (c == -2){
     glColor3f(1.0,1.0,1.0);             // White Color
   }
