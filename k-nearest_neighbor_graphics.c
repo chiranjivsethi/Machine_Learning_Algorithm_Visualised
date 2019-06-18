@@ -1,4 +1,8 @@
 #include "graphics.h"
+#include <stdbool.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 struct Point{
   int category;                           // Group of point
