@@ -29,8 +29,8 @@ To install OpenGL on Linux(Ubuntu), Run Following Commands
 
 Following Algorithms are Implemented:
  * K-Nearest Neighbors
- * K-means Clustering
  * Linear Regression with and without Gradient Descent
+ * K-means Clustering
 
 ## K-Nearest Neighbors
 It is Classification Algorithm.
@@ -43,17 +43,13 @@ Press following keybord keys to enter a object on possition of mouse pointer:
 4. For Orange press **o**    
 5. For Yellow press **y**
 
-![Color Objects](./Images/Knn-Colors.png)
-
 The Test Object is Specified by Black Color.
 
 Press **t** on keybord to enter test object on possition of mouse pointer
 
-![Color Objects](./Images/Knn-Test.png)
-
 Press **Enter** on keyboard to run the algorithm 
 
-![Run](./Images/Knn-Enter_run.gif)
+![Run](./Images/knn.gif)
 
 The Color of test object will automatically change to the classified class color. There is also added funtioanlity for reloading, loading and new.
 
@@ -68,4 +64,16 @@ Press following keybord keys:
 
     This will reset the window by removing all the points
 
-## K-Means Clustreing
+## Linear Regression with and without Gradient Descent
+Linear Regression is a prediction algorithm and Gradient Descent is optimization fuction which is used to minimize error in prediction.
+
+Press following keybord keys to enter a point on possition of mouse pointer:
+1. For point press **t**
+2. For prediction point press **b**
+
+Press **Enter** on keyboard to run the algorithm
+
+![Run](./Images/lr.gif)
+
+## K-means Clustering
+It is a clustering algorithm that used to find groups in the data
