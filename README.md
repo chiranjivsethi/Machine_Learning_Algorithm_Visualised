@@ -74,6 +74,3 @@ Press following keybord keys to enter a point on possition of mouse pointer:
 Press **Enter** on keyboard to run the algorithm
 
 ![Run](./Images/lr.gif)
-
-## K-means Clustering
-It is a clustering algorithm that used to find groups in the data
