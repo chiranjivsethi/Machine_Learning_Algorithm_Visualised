@@ -29,8 +29,7 @@ To install OpenGL on Linux(Ubuntu), Run Following Commands
 
 Following Algorithms are Implemented:
  * K-Nearest Neighbors
- * Linear Regression with and without Gradient Descent
- * K-means Clustering
+ * Linear Regression with Gradient Descent
 
 ## K-Nearest Neighbors
 It is Classification Algorithm.
