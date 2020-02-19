@@ -2,8 +2,10 @@
 
 Using C language with OpenGL
 
-To compile and run any algorithm use following compand
+To compile any algorithm use following comand:
  >gcc file_name.c -lglut -lGL -lGLEW -lGLU -lm -o output_file_name
+ 
+To run any algorithm use following comand:
  >./output_file_name
 
 To install OpenGL on Linux(Ubuntu), Run Following Commands
