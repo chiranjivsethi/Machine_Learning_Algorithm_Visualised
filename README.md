@@ -73,3 +73,5 @@ Press following keybord keys to enter a point on possition of mouse pointer:
 2. For prediction point press **b**
 
 Press **Enter** on keyboard to run the algorithm
+
+![Run](./Images/lr.gif)
