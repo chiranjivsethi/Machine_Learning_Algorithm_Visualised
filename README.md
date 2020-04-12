@@ -65,7 +65,7 @@ Press following keybord keys:
 
     This will reset the window by removing all the points
 
-## Linear Regression with and without Gradient Descent
+## Linear Regression with Gradient Descent
 Linear Regression is a prediction algorithm and Gradient Descent is optimization fuction which is used to minimize error in prediction.
 
 Press following keybord keys to enter a point on possition of mouse pointer:
